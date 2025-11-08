@@ -54,7 +54,8 @@ Export processed sentiment data for further analysis.
 ### Screenshots 
 
 
-#### Analysis 
+### Analysis 
+
 
 <img width="1384" height="697" alt="Screenshot 2025-11-07 at 4 38 20 PM" src="https://github.com/user-attachments/assets/9dae2622-bbe6-42fb-a4e3-059e4010804d" />
 
@@ -64,7 +65,8 @@ Export processed sentiment data for further analysis.
 
 
 
-#### Vizualization
+### Vizualization
+
 
 <img width="1384" height="774" alt="Screenshot 2025-11-07 at 6 07 40 PM" src="https://github.com/user-attachments/assets/88a84670-82db-4846-8439-b1fd606c303e" />
 
