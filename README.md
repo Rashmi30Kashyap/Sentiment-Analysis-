@@ -55,6 +55,6 @@ Export processed sentiment data for further analysis.
 
 
 
-#### Conclusion
+### Conclusion
 
 This project provides a complete end-to-end pipeline for sentiment analysis on Amazon reviews, offering comparisons between Fashion and Luxury product categories. It shows how NLP, data visualization, and interactive dashboards can convert raw text into insights useful for product evaluation and customer experience analysis.
