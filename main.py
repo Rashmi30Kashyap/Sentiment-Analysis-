@@ -215,7 +215,7 @@ elif menu == "Visualization":
     else:
         df = st.session_state['combined_df']
 
-    # --- Filters ---
+    
     st.markdown("###  Filter Options")
     categories = st.multiselect("Select Categories", df['Category'].unique(), default=list(df['Category'].unique()))
     sentiments = st.multiselect("Select Sentiments", df['Sentiment'].unique(), default=list(df['Sentiment'].unique()))
@@ -225,17 +225,17 @@ elif menu == "Visualization":
         st.warning(" No data available for the selected filters.")
         st.stop()
 
-    # --- Visualization Type ---
+    
     vis_option = st.selectbox(
         "Select Visualization Type",
         ["Table", "Pie Chart", "Bar Chart", "Stacked Bar Chart", "Category Comparison", "Box Plot", "Scatter Plot"]
     )
 
-    # --- Table ---
+    # Table
     if vis_option == "Table":
         st.dataframe(filtered_df)
 
-    # --- Pie Chart ---
+    # Pie Chart
     elif vis_option == "Pie Chart":
         st.markdown("###  Sentiment Distribution")
         sentiment_counts = filtered_df['Sentiment'].value_counts().reset_index()
@@ -244,21 +244,21 @@ elif menu == "Visualization":
         fig.update_traces(textposition='inside', textinfo='percent+label')
         st.plotly_chart(fig, use_container_width=True)
 
-    # --- Bar Chart ---
+    # Bar Chart
     elif vis_option == "Bar Chart":
         sentiment_counts = filtered_df.groupby(['Category', 'Sentiment']).size().reset_index(name='Count')
         fig = px.bar(sentiment_counts, x='Category', y='Count', color='Sentiment', barmode='group',
                      title="Sentiment Count by Category")
         st.plotly_chart(fig, use_container_width=True)
 
-    # --- Stacked Bar Chart ---
+    #  Stacked Bar Chart
     elif vis_option == "Stacked Bar Chart":
         sentiment_counts = filtered_df.groupby(['Category', 'Sentiment']).size().reset_index(name='Count')
         fig = px.bar(sentiment_counts, x='Category', y='Count', color='Sentiment', barmode='stack',
                      title="Stacked Sentiment Distribution per Category")
         st.plotly_chart(fig, use_container_width=True)
 
-    # --- Category Comparison (Percentage) ---
+    # Category Comparison 
     elif vis_option == "Category Comparison":
         st.markdown("### ️ Sentiment Percentage Comparison")
         sentiment_summary = filtered_df.groupby(['Category', 'Sentiment']).size().reset_index(name='Count')
@@ -275,7 +275,7 @@ elif menu == "Visualization":
         st.markdown("###  Detailed Sentiment Breakdown")
         st.dataframe(sentiment_summary)
 
-    # --- Box Plot ---
+    #  Box Plot 
     elif vis_option == "Box Plot":
         numeric_columns = filtered_df.select_dtypes(include=['float64', 'int64']).columns.tolist()
         if numeric_columns:
@@ -286,7 +286,7 @@ elif menu == "Visualization":
         else:
             st.info("No numeric columns available for Box Plot.")
 
-    # --- Scatter Plot ---
+    # Scatter Plot
     elif vis_option == "Scatter Plot":
         numeric_columns = filtered_df.select_dtypes(include=['float64', 'int64']).columns.tolist()
         if len(numeric_columns) >= 2:
